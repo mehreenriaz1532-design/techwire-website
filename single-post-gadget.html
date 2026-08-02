@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title id="page-title">Post - TechWire</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background: #f7f7f7; color: #1a1a2e; }
+a { text-decoration: none; color: inherit; }
+header { background: #ffffff; border-bottom: 1px solid #ea; padding: 18px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 24px; color: #1a1a1a; }
+.logo-icon { color: #7c5cff; font-weight: 900; font-size: 28px; }
+nav { display: flex; gap: 32px; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+nav a:hover, nav a.active { color: #7c5cff; }
+.header-right { display: flex; align-items: center; gap: 25px; font-weight: 600; font-size: 14px; }
+.btn-subscribe { color: #7c5cff; }
+.main-bg { background: #f7f7f7; padding: 50px 0; }
+.container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+.post-card { background: #fff; padding: 40px; margin-bottom: 30px; border-radius: 8px; }
+.post-featured-img img { width: 100%; height: auto; display: block; margin-bottom: 25px; border-radius: 8px; }
+.post-title { font-size: 32px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; color: #1a1a2e; }
+.post-meta { font-size: 14px; color: #6b7280; margin-bottom: 40px; }
+.post-content h3 { font-size: 28px; font-weight: 800; margin: 35px 0 18px; color: #1a1a2e; }
+.post-content p { font-size: 16px; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+.post-content blockquote { border-left: 3px solid #e5e7eb; padding: 5px 0 5px 25px; font-style: italic; color: #4b5563; margin: 30px 0; font-size: 16px; }
+.post-navigation { display: flex; justify-content: space-between; font-size: 15px; font-weight: 600; margin: 80px auto; padding: 0 20px; max-width: 780px; }
+.post-navigation a:hover { color: #7c5cff; }
+.must-read-card { background: #fff; padding: 40px; margin-bottom: 30px; border-radius: 8px; }
+.must-read-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 25px; }
+.must-read-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.must-read-item img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 15px; border-radius: 8px; }
+.must-read-item h4 { font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
+.must-read-item h4:hover { color: #7c5cff; }
+.must-read-item.cat { font-size: 13px; color: #4b5563; }
+.comments-card { background: #fff; padding: 40px; border-radius: 8px; }
+.comments-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.comments-card.note { font-size: 14px; color: #6b7280; margin-bottom: 25px; }
+.comment-form textarea { width: 100%; padding: 14px; border: 1px solid #e5e7eb; height: 200px; border-radius: 6px; font-family: 'Plus Jakarta Sans'; }
+.comment-form textarea:focus,.comment-form input:focus { outline: none; border-color: #7c5cff; }
+.comment-form.form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.comment-form input { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 6px; font-family: 'Plus Jakarta Sans'; }
+.comment-form button { background: #7c5cff; color: #fff; border: none; padding: 12px 24px; font-weight: 700; border-radius: 6px; cursor: pointer; }
+.site-footer { background: #f8f9fa; }
+.newsletter-section { background: linear-gradient(135deg, #7fffd4 0%, #b2f5ea 100%); padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+.newsletter-section h2 { font-size: 32px; font-weight: 800; }
+.newsletter-form-wrap { display: flex; gap: 15px; flex: 1; max-width: 500px; }
+.newsletter-form-wrap input { flex: 1; padding: 14px 18px; border: 1px solid #d1d5db; border-radius: 6px; }
+.newsletter-form-wrap button { background: #7c5cff; color: #fff; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.footer-widgets { max-width: 1200px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+.footer-logo.logo-icon { font-size: 28px; color: #7c5cff; }
+.social-links { display: flex; gap: 15px; font-size: 20px; }
+.footer-col h4 { font-size: 18px; margin-bottom: 20px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a { color: #555; }
+.footer-col a:hover { color: #7c5cff; }
+.footer-bottom { text-align: center; padding: 25px; border-top: 1px solid #e5e7eb; color: #666; }
+@media(max-width: 900px){
+  nav { display: none; }
+.must-read-grid,.comment-form.form-row { grid-template-columns: 1fr; }
+.newsletter-section { flex-direction: column; align-items: flex-start; }
+.newsletter-form-wrap { width: 100%; flex-direction: column; }
+.footer-widgets { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo"><span class="logo-icon">T///</span> TechWire</a>
+    <nav>
+      <a href="technology.html">Technology</a>
+      <a href="gadget.html" class="active">Gadget</a>
+      <a href="software.html">Software</a>
+      <a href="apps.html">Apps</a>
+      <a href="games.html">Games</a>
+      <a href="podcast.html">Podcasts</a>
+    </nav>
+    <div class="header-right">
+      <a href="#" class="btn-subscribe">Subscribe</a>
+      <a href="#">Sign In</a>
+    </div>
+  </header>
+
+<div class="main-bg">
+  <main>
+    <article class="post-card container">
+      <div class="post-featured-img"><img id="post-img" src="" alt=""></div>
+      <h1 id="post-title" class="post-title"></h1>
+      <div class="post-meta">Gadget / Leave a Comment</div>
+      <div id="post-content" class="post-content"></div>
+    </article>
+
+    <div class="post-navigation">
+      <a id="prev-link" href="#">← Previous Post</a>
+      <a id="next-link" href="#">Next Post →</a>
+    </div>
+
+    <section class="must-read-card container">
+      <h3>Must Read</h3>
+      <div id="must-read-grid" class="must-read-grid"></div>
+    </section>
+
+    <section class="comments-card container">
+      <h3>Leave a Comment</h3>
+      <p class="note">Your email address will not be published. Required fields are marked *</p>
+      <form class="comment-form">
+        <textarea placeholder="Type here.."></textarea>
+        <div class="form-row">
+          <input type="text" placeholder="Name*">
+          <input type="email" placeholder="Email*">
+          <input type="text" placeholder="Website">
+        </div>
+        <button type="submit">Post Comment »</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <section class="newsletter-section">
+    <div class="newsletter-content"><h2>Sign up for Newsletter</h2><p>Maecenas potenti ultrices, turpis eget turpis gravida.</p></div>
+    <form class="newsletter-form-wrap">
+      <input type="email" placeholder="Email address *" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+  <div class="footer-widgets">
+    <div class="footer-col"><div class="footer-logo"><span class="logo-icon">T///</span> TechWire</div><div class="social-links"><a href="#">📷</a><a href="#">f</a><a href="#">🐦</a></div></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Our Staff</a></li></ul></div>
+    <div class="footer-col"><h4>Tech News</h4><ul><li><a href="technology.html">Technology</a></li><li><a href="gadget.html">Gadget</a></li><li><a href="games.html">Games</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>Copyright © 2026 Tech News.</p></div>
+</footer>
+
+<script>
+const posts = {
+ 1: {
+    title: "Apple Vision Pro 2 Review: The Future is Here",
+    img: "images/g-tech-1.jpg", // <-- yahan change
+    content: `<h3>Spatial Computing Redefined</h3>
+<p>Apple's second generation Vision Pro has finally solved the biggest complaints of the first model. It's 40% lighter, battery life is now 4 hours, and the display resolution is so sharp you can't tell it's not real. This is the device that will make spatial computing mainstream.</p>
+<p>What makes it special is the ecosystem. Over 5000 apps are now optimized for VisionOS 2.0. From virtual monitors to 3D design to immersive movies, everything just works. The hand tracking is flawless and eye tracking feels like magic.</p>
+<blockquote>
+This is the iPhone moment for spatial computing.
+</blockquote>
+<h3>Who Should Buy It</h3>
+<p>At $2499 it's still expensive, but for developers, designers, and professionals it's already paying for itself. The killer feature is the virtual workspace - you can have 6 monitors in front of you anywhere. If you work from home, this replaces your entire desk setup.</p>
+<p>The competition is 2 years behind. Meta, Samsung, nobody has an answer for this yet. Apple has won the AR/VR race before it even started.</p>`
+  },
+ 2: {
+    title: "Samsung Galaxy Z Fold 6: Best Foldable Yet",
+    img: "images/g-tech-2.jpg", // <-- yahan change
+    content: `<h3>Foldable Done Right</h3>
+<p>The Galaxy Z Fold 6 fixes everything that was wrong with previous foldables. No more crease in the middle. No more fragile screen. No more heavy brick in your pocket. This is the first foldable that feels like a finished product.</p>
+<p>The inner 7.6 inch display is now bright enough for outdoor use and the cameras are finally flagship level. The new S-Pen integration makes it a true laptop replacement. Battery life is all day even with heavy use.</p>
+<blockquote>
+This is what a $1799 phone should feel like.
+</blockquote>
+<h3>The Productivity Beast</h3>
+<p>Run 3 apps at once, drag and drop files, use desktop mode with a monitor. This is not a phone, it's a computer that fits in your pocket. Samsung DeX has never been better.</p>
+<p>If you want one device to do everything, this is it. The hinge will last 200,000 folds. Samsung is confident enough to give 2 years warranty on the screen.</p>`
+  },
+ 3: {
+    title: "Sony WH-1000XM6: Noise Cancelling King",
+    img: "images/g-tech-3.jpg", // <-- yahan change
+    content: `<h3>Silence Has a New Name</h3>
+<p>Sony has done it again. The WH-1000XM6 are the best noise cancelling headphones you can buy. Period. They block 98% of ambient noise and the sound quality is audiophile level.</p>
+<p>Battery life is 40 hours with ANC on. Multipoint connection works flawlessly. The new AI chip adapts the sound profile to what you're listening to automatically.</p>
+<blockquote>
+Put these on and the world disappears.
+</blockquote>
+<h3>Worth the Upgrade?</h3>
+<p>If you have XM4 or XM5, the jump is noticeable but not essential. If you have anything older, upgrade immediately. The comfort alone is worth it for 8 hour work days.</p>
+<p>At $399 they are expensive, but Bose and Apple can't touch them. Sony owns the premium headphone market.</p>`
+  },
+ 4: {
+    title: "DJI Mini 5 Pro: Drone for Everyone",
+    img: "images/g-tech-4.jpg", // <-- yahan change
+    content: `<h3>Pro Features, Tiny Size</h3>
+<p>The Mini 5 Pro weighs under 249g but shoots 8K video and has obstacle avoidance in all directions. This is insane. You don't need a license to fly it in most countries.</p>
+<p>The 45 minute flight time means you can actually get the shots you want. The new AI tracking keeps subjects in frame perfectly. Image stabilization is gimbal-level smooth.</p>
+<blockquote>
+This fits in your jacket pocket and outshoots $5000 drones.
+</blockquote>
+<h3>Beginner Friendly</h3>
+<p>Auto takeoff, auto landing, return to home. If you can use a smartphone you can fly this. The app gives you pro editing tools right on your phone.</p>
+<p>Content creators, this is your new best friend. $999 and you have a production studio in the air.</p>`
+  },
+ 5: {
+    title: "Tesla Cybertruck Accessories You Must Have",
+    img: "images/g-tech-5.jpg", // <-- yahan change
+    content: `<h3>Make Your Truck Smarter</h3>
+<p>The Cybertruck is already a tech gadget on wheels. But these 5 accessories take it to the next level. Solar bed cover, camp kitchen, mobile power station, and more.</p>
+<p>The best part is everything integrates with Tesla's software. Control your fridge from the touchscreen. Check solar charging from the app.</p>
+<blockquote>
+This is not a truck. It's a power plant with wheels.
+</blockquote>
+<h3>Off Grid Living</h3>
+<p>With the right setup you can live off grid for weeks. The truck powers your house during outages. It charges your other EVs. It's the ultimate gadget for tech people.</p>
+<p>Starting at $800 for accessories. Expensive but worth every penny if you use the truck daily.</p>`
+  },
+ 6: {
+    title: "Oura Ring 4: Health Tracking Perfected",
+    img: "images/g-tech-6.jpg", // <-- yahan change
+    content: `<h3>Your Health in a Ring</h3>
+<p>The Oura Ring 4 is so accurate it can detect illness 3 days before symptoms. Heart rate, sleep, stress, temperature, blood oxygen. All in a ring that weighs 4 grams.</p>
+<p>Battery lasts 8 days. Charging is wireless. The app gives you actionable insights instead of just data. "Go to bed 30 min earlier" not "you slept 7.2 hours".</p>
+<blockquote>
+This knows your body better than you do.
+</blockquote>
+<h3>Doctor Approved</h3>
+<p>Hospitals are using Oura data to monitor patients remotely. Athletes use it to optimize recovery. If you care about health, this is non-negotiable.</p>
+<p>$299 + $6/month subscription. The subscription is worth it for the insights alone.</p>`
+  },
+ 7: {
+    title: "Steam Deck OLED 2: Portable Gaming King",
+    img: "images/g-tech-7.jpg", // <-- yahan change
+    content: `<h3>Console Quality on the Go</h3>
+<p>Valve's new Steam Deck OLED 2 runs Cyberpunk 2077 at 60fps. The 7.4 inch OLED screen is gorgeous. Battery is 6 hours even in demanding games.</p>
+<p>Windows runs perfectly on it too. This is a full PC in handheld form. Dock it and play on your TV at 4K.</p>
+<blockquote>
+This killed the Nintendo Switch.
+</blockquote>
+<h3>Best Value in Gaming</h3>
+<p>$549 and you have access to your entire Steam library. No subscription. No exclusives. Just games. The controls are better than any handheld before.</p>
+<p>If you game, you need this. Simple.</p>`
+  },
+ 8: {
+    title: "Amazon Echo Show 15: Smart Home Hub",
+    img: "images/g-tech-8.jpg", // <-- yahan change
+    content: `<h3>Your Wall is Now Smart</h3>
+<p>The 15 inch Echo Show mounts on your wall and becomes the control center for your entire home. Calendar, notes, camera feeds, music, recipes. Everything.</p>
+<p>The new AI can answer questions about your photos. "Show me pictures of the dog at the beach". It just works. Video calls look amazing on the big screen.</p>
+<blockquote>
+This replaced 5 different apps in my house.
+</blockquote>
+<h3>Family Command Center</h3>
+<p>Kids use it for homework. Parents use it for shopping lists. It announces when dinner is ready. $299 and it replaces a tablet, smart display, and photo frame.</p>
+<p>Privacy controls are solid. Camera has a physical shutter. Amazon finally got this right.</p>`
+  },
+ 9: {
+    title: "Meta Ray-Ban AI Glasses: The Future of Wearables",
+    img: "images/g-tech-9.jpg", // <-- yahan change. Agar 9th pic nahi hai to g-tech-8.jpg laga do
+    content: `<h3>Glasses That See For You</h3>
+<p>These look like normal Ray-Bans but have a camera, speakers, and AI built in. Ask "what am I looking at" and it tells you. Translate signs in real time. Take photos with a blink.</p>
+<p>Battery lasts all day. They weigh the same as regular glasses. People don't even know you're recording. The AI assistant is genuinely useful, not gimmicky.</p>
+<blockquote>
+This is the first wearable that doesn't feel like a wearable.
+</blockquote>
+<h3>Privacy and Power</h3>
+<p>LED light shows when recording. Audio is directional so only you can hear it. $299 and you have AI, camera, and music in your glasses.</p>
+<p>In 2 years everyone will have these. Meta is 3 years ahead of Apple and Google on this.</p>`
+  }
+};
+
+const urlParams = new URLSearchParams(window.location.search);
+const postId = urlParams.get('id') || 1;
+const currentPost = posts[postId];
+
+if(!currentPost) window.location.href = "single-post-gadget.html?id=1";
+
+document.getElementById('page-title').innerText = currentPost.title + " - TechWire";
+document.getElementById('post-title').innerText = currentPost.title;
+document.getElementById('post-img').src = currentPost.img;
+document.getElementById('post-content').innerHTML = currentPost.content;
+
+const prevId = parseInt(postId) - 1;
+const nextId = parseInt(postId) + 1;
+if(posts[prevId]) document.getElementById('prev-link').href = `single-post-gadget.html?id=${prevId}`; else document.getElementById('prev-link').style.display = 'none';
+if(posts[nextId]) document.getElementById('next-link').href = `single-post-gadget.html?id=${nextId}`; else document.getElementById('next-link').style.display = 'none';
+
+// MUST READ - SIRF 2 POSTS
+const mustReadGrid = document.getElementById('must-read-grid');
+let mustReadHTML = '';
+let count = 0;
+
+Object.keys(posts).forEach(id => {
+  if(id!= postId && count < 2){
+    mustReadHTML += `<div class="must-read-item"><a href="single-post-gadget.html?id=${id}"><img src="${posts[id].img}" alt=""></a><h4><a href="single-post-gadget.html?id=${id}">${posts[id].title}</a></h4><div class="cat">Gadget</div></div>`
+    count++;
+  }
+});
+mustReadGrid.innerHTML = mustReadHTML;
+
+</script>
+</body>
+</html>
