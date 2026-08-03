@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title id="page-title">Post - TechWire</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background: #f7f7f7; color: #1a1a2e; }
+a { text-decoration: none; color: inherit; }
+header { background: #ffffff; border-bottom: 1px solid #ea; padding: 18px 5%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 24px; color: #1a1a1a; justify-self: start; }
+.logo-icon { color: #7c5cff; font-weight: 900; font-size: 28px; }
+nav { display: flex; gap: 32px; font-weight: 700; font-size: 14px; text-transform: uppercase; justify-self: center; }
+nav a:hover, nav a.active { color: #7c5cff; }
+.header-right { display: flex; align-items: center; gap: 25px; font-weight: 600; font-size: 14px; justify-self: end; }
+.btn-subscribe { color: #7c5cff; }
+.main-bg { background: #f7f7f7; padding: 50px 0; }
+.container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+.post-card { background: #fff; padding: 40px; margin-bottom: 30px; border-radius: 8px; }
+.post-featured-img img { width: 100%; height: auto; display: block; margin-bottom: 25px; border-radius: 8px; }
+.post-title { font-size: 32px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; color: #1a1a2e; }
+.post-meta { font-size: 14px; color: #6b7280; margin-bottom: 40px; }
+.post-content h3 { font-size: 28px; font-weight: 800; margin: 35px 0 18px; color: #1a1a2e; }
+.post-content p { font-size: 16px; line-height: 1.8; color: #4b5563; margin-bottom: 20px; }
+.post-content blockquote { border-left: 3px solid #e5e7eb; padding: 5px 0 5px 25px; font-style: italic; color: #4b5563; margin: 30px 0; font-size: 16px; }
+.post-navigation { display: flex; justify-content: space-between; font-size: 15px; font-weight: 600; margin: 80px auto; padding: 0 20px; max-width: 780px; }
+.post-navigation a:hover { color: #7c5cff; }
+.must-read-card { background: #fff; padding: 40px; margin-bottom: 30px; border-radius: 8px; }
+.must-read-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 25px; }
+.must-read-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.must-read-item img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 15px; border-radius: 8px; }
+.must-read-item h4 { font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
+.must-read-item h4:hover { color: #7c5cff; }
+.must-read-item.cat { font-size: 13px; color: #4b5563; }
+.comments-card { background: #fff; padding: 40px; border-radius: 8px; }
+.comments-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.comments-card.note { font-size: 14px; color: #6b7280; margin-bottom: 25px; }
+.comment-form textarea { width: 100%; padding: 14px; border: 1px solid #e5e7eb; height: 200px; border-radius: 6px; font-family: 'Plus Jakarta Sans'; margin-bottom: 20px; }
+.comment-form textarea:focus,.comment-form input:focus { outline: none; border-color: #7c5cff; }
+.comment-form.form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.comment-form input { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 6px; font-family: 'Plus Jakarta Sans'; }
+.comment-form button { background: #7c5cff; color: #fff; border: none; padding: 12px 24px; font-weight: 700; border-radius: 6px; cursor: pointer; }
+.site-footer { background: #f8f9fa; margin-top: 80px; }
+.newsletter-section { background: linear-gradient(135deg, #a8ffeb 0%, #c3f7e8 100%); padding: 50px 5%; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.newsletter-content h2 { font-size: 34px; font-weight: 800; }
+.newsletter-content p { color: #333; margin-top: 5px; }
+.newsletter-form { display: flex; gap: 10px; width: 45%; }
+.newsletter-form input { flex: 1; padding: 14px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Plus Jakarta Sans'; }
+.newsletter-form button { background: #7c5cff; color: #fff; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+.footer-widgets { max-width: 1200px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+.social-links { display: flex; gap: 15px; font-size: 20px; }
+.social-links a:hover { color: #7c5cff; }
+.footer-col h4 { font-size: 18px; margin-bottom: 20px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a { color: #555; }
+.footer-col a:hover { color: #7c5cff; }
+.footer-bottom { text-align: center; padding: 25px; border-top: 1px solid #e0e0e0; color: #666; }
+@media(max-width: 900px){header { grid-template-columns: 1fr; } nav { display: none; }.header-right { display: none; }.must-read-grid,.comment-form.form-row { grid-template-columns: 1fr; }.newsletter-section { flex-direction: column; align-items: flex-start; }.newsletter-form { width: 100%; flex-direction: column; }.footer-widgets { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo"><span class="logo-icon">T///</span> TechWire</a>
+    <nav>
+      <a href="technology.html">Technology</a>
+      <a href="gadget.html">Gadget</a>
+      <a href="software.html">Software</a>
+      <a href="apps.html" class="active">Apps</a>
+      <a href="games.html">Games</a>
+      <a href="podcast.html">Podcasts</a>
+    </nav>
+    <div class="header-right">
+      <a href="#" class="btn-subscribe">Subscribe</a>
+      <a href="#">Sign In</a>
+      <span style="font-size:18px; cursor:pointer;">🔍</span>
+    </div>
+  </header>
+
+<div class="main-bg">
+  <main>
+    <article class="post-card container">
+      <div class="post-featured-img"><img id="post-img" src="" alt=""></div>
+      <h1 id="post-title" class="post-title"></h1>
+      <div class="post-meta">Apps / Leave a Comment</div>
+      <div id="post-content" class="post-content"></div>
+    </article>
+
+    <div class="post-navigation">
+      <a id="prev-link" href="#">← Previous Post</a>
+      <a id="next-link" href="#">Next Post →</a>
+    </div>
+
+    <section class="must-read-card container">
+      <h3>Must Read</h3>
+      <div id="must-read-grid" class="must-read-grid"></div>
+    </section>
+
+    <section class="comments-card container">
+      <h3>Leave a Comment</h3>
+      <p class="note">Your email address will not be published. Required fields are marked *</p>
+      <form class="comment-form">
+        <textarea placeholder="Type here.."></textarea>
+        <div class="form-row">
+          <input type="text" placeholder="Name*">
+          <input type="email" placeholder="Email*">
+          <input type="text" placeholder="Website">
+        </div>
+        <button type="submit">Post Comment »</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <section class="newsletter-section">
+    <div class="newsletter-content">
+      <h2>Sign up for Newsletter</h2>
+      <p>Maecenas potenti ultrices, turpis eget turpis gravida.</p>
+    </div>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Email address *" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+  <div class="footer-widgets">
+    <div class="footer-col brand-col">
+      <div class="footer-logo"><span class="logo-icon">T///</span><span class="logo-text">TechWire</span></div>
+      <div class="social-links"><a href="#">📷</a><a href="#">📘</a><a href="#">🐦</a></div>
+    </div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Our Staff</a></li><li><a href="#">Advertise</a></li></ul></div>
+    <div class="footer-col"><h4>Tech News</h4><ul><li><a href="technology.html">Technology</a></li><li><a href="gadget.html">Gadget</a></li><li><a href="software.html">Software</a></li><li><a href="apps.html">Apps</a></li><li><a href="games.html">Games</a></li><li><a href="podcast.html">Podcasts</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Extra Crunch Terms</a></li><li><a href="#">Code of Conduct</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>Copyright &copy; 2026 Tech News.</p></div>
+</footer>
+
+<script>
+const posts = {
+ 1: {title: "TikTok 2026: AI Creates Videos For You",img: "a-tech-1.jpg",content: `<h3>No More Editing Needed</h3><p>TikTok just launched "AI Director". You type "make me a travel vlog" and it generates the entire video with clips, music, captions and voiceover. 500 million people used it in the first week.</p><p>The new "Trend Predictor" tells you what will go viral next Tuesday. Creators are calling it "cheat codes for fame". Brands are paying $50k for 1 AI-generated TikTok.</p><blockquote>Content creation is now dead. Content generation is here.</blockquote><h3>What's New</h3><p>Live shopping is now AR. Point your camera at shoes and TikTok shows you price + reviews. The app is basically becoming Amazon + YouTube + Google all in one.</p>`},
+ 2: {title: "WhatsApp 2026: Chat With Any Phone Number Using AI",img: "a-tech-2.jpg",content: `<h3>Meta AI Inside Every Chat</h3><p>WhatsApp 2026 has "Universal Chat". You can now message any phone number even if they don't have WhatsApp. Meta AI translates it to SMS in real time.</p><p>The new "AI Summarize" button gives you 3 bullet points of any 200 message group chat. "Voice Clone" lets you reply in your friend's voice. Scary but cool.</p><blockquote>WhatsApp is no longer just a messenger. It's your AI assistant.</blockquote><h3>Business Features</h3><p>Small businesses now get "AI Sales Agent" for free. It answers customer questions, takes orders, and sends invoices automatically. 10 million businesses signed up in 1 month.</p>`},
+ 3: {title: "Instagram Threads: Now Bigger Than Twitter",img: "a-tech-3.jpg",content: `<h3>Threads Wins The Text War</h3><p>Instagram Threads hit 800 million users. The secret? "AI Post Writer" and "Auto Reply". You think of an idea, AI writes 5 versions of the post for you.</p><p>The new "Topic Rooms" are like Discord but public. AI moderates everything so no trolls. Celebrities left Twitter and came here because engagement is 3x higher.</p><blockquote>Twitter died. Threads killed it with AI.</blockquote><h3>Monetization</h3><p>Creators now earn from "Thread Ads". If your thread goes viral, you get paid per 1000 views. Top creators making $20k/month just from text posts.</p>`},
+ 4: {title: "Notion AI 2.0: Your Second Brain",img: "a-tech-4.jpg",content: `<h3>Notion That Works For You</h3><p>Notion AI 2.0 doesn't wait for prompts. It watches how you work and automatically organizes everything. Meeting notes turn into tasks, emails turn into projects.</p><p>The new "AI Workspace" connects Gmail, Slack, Google Drive and creates 1 dashboard. Ask "what did I miss this week" and it gives you a full report.</p><blockquote>Notion is no longer a tool. It's your Chief of Staff.</blockquote><h3>For Teams</h3><p>Companies using Notion AI saw 40% productivity boost. It writes documentation, creates presentations, and even interviews job candidates. $12/user/month but worth it.</p>`},
+ 5: {title: "Spotify AI DJ: Knows What You Want Before You Do",img: "a-tech-5.jpg",content: `<h3>Music That Reads Your Mood</h3><p>Spotify's new "AI DJ" doesn't just play songs. It talks to you. "Hey, you seem stressed. Here's some lofi". It knows your mood from how you type and walk.</p><p>The "Song Generator" lets you create custom songs. "Make me a breakup song like Taylor Swift" and you get an original track in 10 seconds. All legal and royalty-free.</p><blockquote>Playlists are old. Now we have AI personalities.</blockquote><h3>Podcasts Too</h3><p>Spotify now auto-generates podcasts from any article. Paste a link and get a 10 minute podcast with 2 AI hosts discussing it. 1 million podcasts created daily.</p>`}
+};
+
+const urlParams = new URLSearchParams(window.location.search);
+const postId = urlParams.get('id') || 1;
+const currentPost = posts[postId];
+if(!currentPost) window.location.href = "single-post-apps.html?id=1";
+document.getElementById('page-title').innerText = currentPost.title + " - TechWire";
+document.getElementById('post-title').innerText = currentPost.title;
+document.getElementById('post-img').src = currentPost.img;
+document.getElementById('post-content').innerHTML = currentPost.content;
+const prevId = parseInt(postId) - 1;
+const nextId = parseInt(postId) + 1;
+if(posts[prevId]) document.getElementById('prev-link').href = `single-post-apps.html?id=${prevId}`; else document.getElementById('prev-link').style.display = 'none';
+if(posts[nextId]) document.getElementById('next-link').href = `single-post-apps.html?id=${nextId}`; else document.getElementById('next-link').style.display = 'none';
+const mustReadGrid = document.getElementById('must-read-grid');
+let mustReadHTML = '';
+let count = 0;
+Object.keys(posts).forEach(id => {if(id!= postId && count < 2){mustReadHTML += `<div class="must-read-item"><a href="single-post-apps.html?id=${id}"><img src="${posts[id].img}" alt=""></a><h4><a href="single-post-apps.html?id=${id}">${posts[id].title}</a></h4><div class="cat">Apps</div></div>`;count++;}});
+mustReadGrid.innerHTML = mustReadHTML;
+</script>
+</body>
+</html>
